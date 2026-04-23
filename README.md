@@ -5,6 +5,8 @@ The smart campus API built for the CSA coursework is a RESTful web service built
 
 
 
+---
+
 ## How to Build and Run
 
 
@@ -13,6 +15,7 @@ The smart campus API built for the CSA coursework is a RESTful web service built
 - Apache Maven
 - Apache Tomcat 10.1.54
 - Apache NetBeans IDE
+
 
 
 ### Step by step instructions to build the project and launch the server
@@ -43,4 +46,52 @@ git clone https://github.com/MthukaFernando/Client-Server-Architecture-CW.git
 
 **6. The API will be available at:**
 http://localhost:8080/SmartCampusAPI/api/v1
+
+
+
+---
+
+## Sample curl commands with successful interactions with different parts of the API
+
+
+**1. Get API discovery info:**
+```bash
+curl -X GET http://localhost:8080/SmartCampusAPI/api/v1
+```
+
+**2. Create a room:**
+```bash
+curl -X POST http://localhost:8080/SmartCampusAPI/api/v1/rooms \
+  -H "Content-Type: application/json" \
+  -d '{"id":"LIB-301","name":"Library Quiet Study","capacity":50}'
+```
+
+**3. Create a sensor:**
+```bash
+curl -X POST http://localhost:8080/SmartCampusAPI/api/v1/sensors \
+  -H "Content-Type: application/json" \
+  -d '{"id":"TEMP-001","type":"Temperature","status":"ACTIVE","currentValue":22.5,"roomId":"LIB-301"}'
+```
+
+**4. Get sensors filtered by type:**
+```bash
+curl -X GET "http://localhost:8080/SmartCampusAPI/api/v1/sensors?type=Temperature"
+```
+
+**5. Post a sensor reading:**
+```bash
+curl -X POST http://localhost:8080/SmartCampusAPI/api/v1/sensors/TEMP-001/readings \
+  -H "Content-Type: application/json" \
+  -d '{"value":25.5}'
+```
+
+**6. Get all readings for a sensor:**
+```bash
+curl -X GET http://localhost:8080/SmartCampusAPI/api/v1/sensors/TEMP-001/readings
+```
+
+**7. Delete a room with no sensors (successful deletion):**
+```bash
+curl -X DELETE http://localhost:8080/SmartCampusAPI/api/v1/rooms/LIB-301
+```
 
