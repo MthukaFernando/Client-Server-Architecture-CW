@@ -106,7 +106,11 @@ curl -X GET http://localhost:8080/SmartCampusAPI/api/v1/sensors/TEMP-001/reading
 
 **7. Delete a room with no sensors (successful deletion):**
 ```bash
-curl -X DELETE http://localhost:8080/SmartCampusAPI/api/v1/rooms/LIB-301
+curl -X POST http://localhost:8080/SmartCampusAPI/api/v1/rooms \
+  -H "Content-Type: application/json" \
+  -d '{"id":"EMPTY-101","name":"Empty Room","capacity":20}'
+
+curl -X DELETE http://localhost:8080/SmartCampusAPI/api/v1/rooms/EMPTY-101
 ```
 
 
