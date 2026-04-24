@@ -154,7 +154,7 @@ Exposing internal Java stack traces to external API consumers poses significant 
 
 
 ### Part 5 - Question 3: Filters vs Manual Logging
-Using JAX-RS filters for cross-cutting concerns like logging is far superior to manually inserting `Logger.info()` statements in every resource method. Filters are applied automatically to every request and response without modifying any resource class, following the DRY (Don't Repeat Yourself) principle. If logging logic needs to change it only needs to be updated in one place which is the filter class, rather than in every resource method. Manual logging is also more prone to errors, as developers may forget to add it to new methods. Filters also have access to request and response metadata that may not be easily available inside resource 
+Using JAX-RS filters for cross-cutting concerns like logging is far superior to manually inserting `Logger.info()` statements in every resource method. Filters are applied automatically to every request and response without modifying any resource class, following the DRY (Don't Repeat Yourself) principle. If logging logic needs to change it only needs to be updated in one place which is the filter class, rather than in every resource method. Manual logging is also more prone to errors, as developers may forget to add it to new methods. Filters also have access to request and response metadata that may not be easily available inside resource methods.
 
 
 ---
